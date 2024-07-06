@@ -4,6 +4,21 @@ import animals from '../../helpers/animalsForCards';
 import TitleSection from '../TitleSection';
 
 function AnimalsCard() {
+  const [showAdoptionForm, setShowAdoptionForm] = useState(false); // State to control form visibility
+  const [authenticated, setAuthenticated] = useState(true); // Replace with actual authentication state
+
+  const handleAdoptClick = () => {
+    if (authenticated) {
+      // If authenticated, show adoption form
+      setShowAdoptionForm(true);
+      // Optionally, fetch user data from database here
+    } else {
+      // Handle case where user is not authenticated (redirect to login or show message)
+      alert('Please login to adopt a pet.');
+      // Example redirect to login page
+      // history.push('/login');
+    }
+  };
   return (
     <>
       <TitleSection title="Meet our Friends Here!" />
@@ -37,6 +52,7 @@ function AnimalsCard() {
                 <h2>{animal.location}</h2>
                 <button
                   type="button"
+                  onClick={handleAdoptClick}
                   className="bg-[#C57837] text-white w-52 p-4 focus:outline-none font-bold rounded md:mt-0 col-span-2"
                 >
                   <a href="/adopt">
@@ -48,6 +64,8 @@ function AnimalsCard() {
           </section>
         ))}
       </motion.div>
+    {/* Adoption Form Modal */}
+    {showAdoptionForm && <AdoptionForm onClose={() => setShowAdoptionForm(false)} />}
     </>
   );
 }
