@@ -27,6 +27,17 @@ model User  {
   verfied_flag  Boolean         @default(false)
   Blog          Blog[]
   token         String          @default("")
+  adoptionRequests AdoptionRequest[]
+}
+
+model AdoptionRequest {
+  id                   String   @id @default(uuid())
+  livingConditions     String
+  previousPetExperience String
+  reasonsForAdoption   String
+  approved             Boolean  @default(false)
+  userId               String
+  user                 User     @relation(fields: [userId], references: [id])
 }
 
 

@@ -9,6 +9,7 @@ import router from "./routes"
 import UserController from "./controllers/UserControllers"
 import UserService from "./services/UserService"
 import UserModel from "./models/UserModel"
+import AdoptRouter from './routes/Adopt';
 
 export default class App {
   private app: Express
@@ -85,6 +86,7 @@ export default class App {
   private routes(): void {
     this.app.use(router)
 
+      this.app.use('/adopt', AdoptRouter); // Mount AdoptRouter under /adopt route
     this.app.get(
       "/auth/google",
       passport.authenticate("google", { scope: ["email", "profile"] }),

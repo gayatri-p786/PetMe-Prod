@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { motion } from 'framer-motion';
 import animals from '../../helpers/animalsForCards';
 import TitleSection from '../TitleSection';
+import AdoptionForm from '../AdoptionForm';
 
 function AnimalsCard() {
   const [showAdoptionForm, setShowAdoptionForm] = useState(false); // State to control form visibility
