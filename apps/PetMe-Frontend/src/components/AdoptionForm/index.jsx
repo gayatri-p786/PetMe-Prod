@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios'; 
+import { useNavigate } from 'react-router-dom';
 
 const AdoptionForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ const AdoptionForm = ({ onClose }) => {
     reasonsForAdoption: '',
     agreementChecked: false,
   });
+
+  const history = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, checked, type } = e.target;
@@ -23,10 +26,12 @@ const AdoptionForm = ({ onClose }) => {
 
     try {
       // Send form data to backend
-      const response = await axios.post('http://localhost:3001/adopt', formData); // Assuming your backend is running on the same host
+      // const response = await axios.post('http://localhost:3001/adopt', formData); // Assuming your backend is running on the same host
 
-      console.log('Adoption request submitted:', response.data);
+      history('/digital-contract'); 
+      // console.log('Adoption request submitted:', response.data);
       onClose(); // Close the form after successful submission
+      
     } catch (error) {
       console.error('Failed to submit adoption request:', error);
       // Handle error scenarios (e.g., show error message)

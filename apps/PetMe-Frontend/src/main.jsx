@@ -17,6 +17,7 @@ import About from './pages/About';
 import Pets from './pages/Pets';
 import PetDetails from './pages/PetDetails';
 import ErrorPage from './pages/ErrorPage';
+import DigitalContract from './pages/DigitalContract';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: '/petnews',
     element: <News />,
+  },
+  {
+    path: '/digital-contract',
+    element: <DigitalContract />,
   },
   {
     path: '/blogs',
